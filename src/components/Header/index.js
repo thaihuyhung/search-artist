@@ -26,8 +26,8 @@ const Header = ({ classes }) => {
       <LoadingBar className={classes.loadingBar} />
       <Toolbar classes={{ root: classes.toolbar }}>
         <Typography variant="title" color="inherit">
-          SEARCH ARTIST
-          </Typography>
+          ARTIST&apos;S EVENT
+        </Typography>
       </Toolbar>
     </AppBar>
   );

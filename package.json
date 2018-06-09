@@ -5,9 +5,15 @@
   "dependencies": {
     "@material-ui/core": "^1.2.0",
     "@material-ui/icons": "^1.1.0",
+    "country-list": "^1.1.0",
+    "countrynames": "^0.1.1",
+    "date-fns": "^1.29.0",
+    "downshift": "^1.31.15",
     "immutable": "^3.8.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-flag-icon-css": "^1.0.23",
+    "react-list": "^0.8.9",
     "react-redux": "^5.0.7",
     "react-redux-loading-bar": "^4.0.5",
     "react-router-redux": "next",
@@ -17,6 +23,7 @@
     "redux-saga": "^0.16.0",
     "whatwg-fetch": "^2.0.4"
   },
+  "proxy": "https://www.bandsintown.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

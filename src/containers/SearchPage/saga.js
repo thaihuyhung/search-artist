@@ -3,14 +3,17 @@ import {
   queryArtistSuccess,
   queryArtistEvent,
   queryArtistEventError,
-  queryArtistEventSuccess
+  queryArtistEventSuccess,
+  queryArtistNameError,
+  queryArtistNameSuccess
 } from './action';
-import { QUERY_ARTIST, QUERY_ARTIST_EVENT } from './constant';
+import { QUERY_ARTIST, QUERY_ARTIST_EVENT, QUERY_ARTIST_NAME } from './constant';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import request from '../../utils/request';
 import { APP_ID } from '../../utils/constant';
 
+const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
 function* doQueryArtist({ param: name }) {
   try {
@@ -49,8 +52,24 @@ function* doQueryArtistEvent({ param: name }) {
   }
 }
 
+function* doQueryArtistName({ param: name }) {
+  yield delay(500);
+  try {
+    const queryArtistNameUrl = `/searchSuggestions?searchTerm=${name}&cameFromCode=257`;
+    const response = yield call(request, queryArtistNameUrl);
+    if (response.error) {
+      yield put(queryArtistNameError(response.error));
+      return;
+    }
+    yield put(queryArtistNameSuccess(response));
+  } catch (error) {
+    yield put(queryArtistNameError(error));
+  }
+}
+
 
 export default function* searchPageWatcher() {
   yield takeLatest(QUERY_ARTIST, doQueryArtist);
   yield takeLatest(QUERY_ARTIST_EVENT, doQueryArtistEvent);
+  yield takeLatest(QUERY_ARTIST_NAME, doQueryArtistName);
 }

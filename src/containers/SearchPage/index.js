@@ -3,71 +3,73 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
-import { fromJS } from 'immutable';
-import { queryArtist } from './action';
-import ArtistCard from '../../components/ArtistCard';
-
-const styles = {
-
-}
+import { queryArtist, queryArtistName } from './action';
+import styles from './style';
+import QueryInput from '../../components/QueryInput';
+import ArtistDetail from '../../components/ArtistDetail';
 
 class SearchPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: fromJS({
-        query: ''
-      })
-    }
-  }
-
-  onChangeSearchQuery = (event) => {
-    const value = event.target.value;
-    this.setState(({ data }) => ({
-      data: data.update('query', () => value)
-    }))
-  }
-
-  onKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      const { queryArtist } = this.props;
-      const { data } = this.state;
-      queryArtist(data.get('query'));
-    }
-  }
-
   render() {
-    const { data } = this.state;
-    const { detail } = this.props;
+    const { 
+      classes,
+      queryArtist,
+      detail, 
+      events, 
+      loadingDetail, 
+      loadingEvents, 
+      queryArtistName,
+      artistSuggestions,
+      loadingSuggestions,
+      initialLoad,
+    } = this.props;
+    // TODO handle the case with no ID ( Lee Ryan)
     return (
       <div>
-        <Grid container justify="space-between" alignContent="center" alignItems="center">
-          <Input 
-            value={data.get('query')} 
-            onChange={this.onChangeSearchQuery} 
-            onKeyPress={this.onKeyPress} 
-          />
-        </Grid>
-        {detail && <ArtistCard detail={detail} />}
+        <QueryInput 
+          className={classes.searchInput} 
+          queryArtist={queryArtist} 
+          queryArtistName={queryArtistName}
+          artistSuggestions={artistSuggestions}
+          loadingSuggestions={loadingSuggestions}
+        />
+        <ArtistDetail 
+          initialLoad={initialLoad}
+          detail={detail} 
+          events={events} 
+          loadingDetail={loadingDetail} 
+          loadingEvents={loadingEvents} 
+        />
       </div>
     );
   }
 }
 
 SearchPage.propTypes = {
+  classes: PropTypes.object,
   queryArtist: PropTypes.func,
   detail: PropTypes.object,
+  loadingDetail: PropTypes.bool,
+  events: PropTypes.object,
+  loadingEvents: PropTypes.bool,
+  queryArtistName: PropTypes.func,
+  artistSuggestions: PropTypes.object,
+  loadingSuggestions: PropTypes.bool,
+  initialLoad: PropTypes.bool,
 }
 
 const mapStateToProps = state => ({
   detail: state.getIn(['search', 'detail']),
-  loading: state.getIn(['search', 'loading']),
+  loadingDetail: state.getIn(['search', 'loadingDetail']),
+  events: state.getIn(['search', 'events']),
+  loadingEvents: state.getIn(['search', 'loadingEvents']),
+  artistSuggestions: state.getIn(['search', 'artistSuggestions']),
+  loadingSuggestions: state.getIn(['search', 'loadingSuggestions']),
+  initialLoad: state.getIn(['search', 'initialLoad']),
 })
 
 const mapDispatchToProps = {
-  queryArtist
+  queryArtist,
+  queryArtistName
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

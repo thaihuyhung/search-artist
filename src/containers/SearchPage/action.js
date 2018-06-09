@@ -4,7 +4,10 @@ import {
   QUERY_ARTIST_SUCCESS,
   QUERY_ARTIST_EVENT,
   QUERY_ARTIST_EVENT_ERROR,
-  QUERY_ARTIST_EVENT_SUCCESS
+  QUERY_ARTIST_EVENT_SUCCESS,
+  QUERY_ARTIST_NAME,
+  QUERY_ARTIST_NAME_ERROR,
+  QUERY_ARTIST_NAME_SUCCESS,
 } from './constant';
 
 export function queryArtist(param) {
@@ -45,6 +48,27 @@ export function queryArtistEventSuccess(data) {
 export function queryArtistEventError(error) {
   return {
     type: QUERY_ARTIST_EVENT_ERROR,
+    error
+  };
+}
+
+export function queryArtistName(param) {
+  return {
+    type: QUERY_ARTIST_NAME,
+    param
+  };
+}
+
+export function queryArtistNameSuccess(data) {
+  return {
+    type: QUERY_ARTIST_NAME_SUCCESS,
+    data
+  };
+}
+
+export function queryArtistNameError(error) {
+  return {
+    type: QUERY_ARTIST_NAME_ERROR,
     error
   };
 }
