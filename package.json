@@ -21,7 +21,8 @@
     "redux": "^4.0.0",
     "redux-immutable": "^4.0.0",
     "redux-saga": "^0.16.0",
-    "whatwg-fetch": "^2.0.4"
+    "whatwg-fetch": "^2.0.4",
+    "wurl": "^2.5.3"
   },
   "proxy": "https://www.bandsintown.com",
   "scripts": {

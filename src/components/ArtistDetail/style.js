@@ -5,9 +5,26 @@ export default {
   artistImage: {
     width: 300,
     height: 300,
+    marginBottom: 16,
     boxShadow: '0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12)',
     borderRadius: 4,
     overflow: 'hidden'
+  },
+  bandsintown: {
+    display: 'block',
+    marginBottom: 8,
+    '& img:last-child': {
+      marginLeft: 8
+    }
+  },
+  facebookPage: {
+    display: 'flex',
+    alignItems: 'center',
+    '& span': {
+      fontSize: '24px',
+      lineHeight: '24px',
+      marginLeft: '4px',
+    }
   },
   artistInfoContent: {
     paddingLeft: 16,

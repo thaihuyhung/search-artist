@@ -1,0 +1,34 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
+import styles from './style';
+
+const MessageBlock = ({ classes, content, icon, height }) => {
+  return (
+    <Grid 
+      container 
+      classes={{container: classes.messageBlock}} 
+      justify="center" 
+      alignContent="center" 
+      alignItems="center"
+      style={{ height: `${height}px`}}
+    >
+      {icon}
+      <div className={classes.message}>{content}</div>
+    </Grid>
+  );
+};
+
+MessageBlock.propTypes = {
+  classes: PropTypes.object,
+  content: PropTypes.string,
+  icon: PropTypes.object,
+  height: PropTypes.number
+};
+
+MessageBlock.defaultProps = {
+  height: 200
+}
+
+export default withStyles(styles)(MessageBlock);

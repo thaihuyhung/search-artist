@@ -7,6 +7,7 @@ export default Object.assign({
     justifyContent: 'center',
     alignContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#c7cad9',
     '& img': {
       maxWidth: '100%',
       maxHeight: '100%',

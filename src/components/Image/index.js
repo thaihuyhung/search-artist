@@ -4,6 +4,7 @@ import { fromJS } from 'immutable';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './style';
+import defaultImage from '../../assets/default-image.jpg';
 
 class CustomImage extends Component {
   constructor(props) {
@@ -54,7 +55,9 @@ class CustomImage extends Component {
     const loaded = data.get('loaded');
     const backgroundImage = data.get('backgroundImage');
     return (
-      <div className={classNames(className, classes.customImage, { [classes.skeleton]: !loaded })}>
+      <div 
+        className={classNames(className, classes.customImage, { [classes.skeleton]: !loaded })}
+      >
         {
           backgroundImage && <img src={backgroundImage} alt={alt} />
         }
@@ -64,7 +67,7 @@ class CustomImage extends Component {
 }
 
 CustomImage.defaultProps = {
-  defaultImage: 'https://s3.amazonaws.com/bit-photos/artistLarge.jpg'
+  defaultImage: defaultImage
 }
 
 CustomImage.propTypes = {
