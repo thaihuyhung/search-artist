@@ -24,7 +24,7 @@ const theme = createMuiTheme({
   },
 });
 
-const App = ({ store, history, classes }) => {
+export const App = ({ store, history, classes }) => {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
@@ -45,7 +45,7 @@ const App = ({ store, history, classes }) => {
 App.propTypes = {
   store: PropTypes.object,
   history: PropTypes.object,
-  classes: PropTypes.object,
+  classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(App);

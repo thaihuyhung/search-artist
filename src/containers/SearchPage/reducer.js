@@ -35,7 +35,7 @@ function searchPageReducer(state = initialState, action) {
     case QUERY_ARTIST_ERROR:
       return state
         .set('loadingDetail', false)
-        .set('event', fromJS(null))
+        .set('detail', fromJS(null))
     case QUERY_ARTIST_EVENT:
       return state
         .set('loadingEvents', true);
@@ -46,7 +46,7 @@ function searchPageReducer(state = initialState, action) {
     case QUERY_ARTIST_EVENT_ERROR:
       return state
         .set('loadingEvents', false)
-        .set('event', fromJS(null))
+        .set('events', fromJS(null))
     case QUERY_ARTIST_NAME:
       return state
         .set('loadingSuggestions', true);

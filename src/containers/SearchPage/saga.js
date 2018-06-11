@@ -10,16 +10,14 @@ import {
 import { QUERY_ARTIST, QUERY_ARTIST_EVENT, QUERY_ARTIST_NAME } from './constant';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
-import request from '../../utils/request';
-import { APP_ID } from '../../utils/constant';
+import api from './api';
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
 function* doQueryArtist({ param: name }) {
   try {
     yield put(showLoading());
-    const queryArtistApiUrl = `https://rest.bandsintown.com/artists/${name}?app_id=${APP_ID}`;
-    const response = yield call(request, queryArtistApiUrl);
+    const response = yield call(api.queryArtist, name);
     if (response['upcoming_event_count'] > 0) {
       yield put(queryArtistEvent(name));
     } else {
@@ -27,6 +25,7 @@ function* doQueryArtist({ param: name }) {
     }
     if (response.error) {
       yield put(queryArtistError(response.error));
+      yield put(hideLoading());
       return;
     }
     yield put(queryArtistSuccess(response));
@@ -38,8 +37,7 @@ function* doQueryArtist({ param: name }) {
 
 function* doQueryArtistEvent({ param: name }) {
   try {
-    const queryArtistEventApiUrl = `https://rest.bandsintown.com/artists/${name}/events?app_id=${APP_ID}`;
-    const response = yield call(request, queryArtistEventApiUrl);
+    const response = yield call(api.queryArtistEvents, name);
     if (response.error) {
       yield put(queryArtistEventError(response.error));
       return;
@@ -55,8 +53,7 @@ function* doQueryArtistEvent({ param: name }) {
 function* doQueryArtistName({ param: name }) {
   yield delay(500);
   try {
-    const queryArtistNameUrl = `/searchSuggestions?searchTerm=${name}&cameFromCode=257`;
-    const response = yield call(request, queryArtistNameUrl);
+    const response = yield call(api.queryArtistName, name);
     if (response.error) {
       yield put(queryArtistNameError(response.error));
       return;

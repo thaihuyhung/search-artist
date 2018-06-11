@@ -13,5 +13,6 @@ export default theme => ({
     [theme.breakpoints.down('xs')]: {
       flex: '0 0 calc(50% - 16px)',
     }
-  }
+  },
+  messageBlock: {}
 })

@@ -8,7 +8,7 @@ import styles from './style';
 import QueryInput from '../../components/QueryInput';
 import ArtistDetail from '../../components/ArtistDetail';
 
-class SearchPage extends Component {
+export class SearchPage extends Component {
   render() {
     const { 
       classes,
@@ -44,7 +44,7 @@ class SearchPage extends Component {
 }
 
 SearchPage.propTypes = {
-  classes: PropTypes.object,
+  classes: PropTypes.object.isRequired,
   queryArtist: PropTypes.func,
   detail: PropTypes.object,
   loadingDetail: PropTypes.bool,

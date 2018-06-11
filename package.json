@@ -24,15 +24,24 @@
     "redux": "^4.0.0",
     "redux-immutable": "^4.0.0",
     "redux-saga": "^0.16.0",
+    "redux-saga-test-plan": "^3.7.0",
     "whatwg-fetch": "^2.0.4",
     "wurl": "^2.5.3"
   },
   "proxy": "https://www.bandsintown.com",
+  "jest": {
+    "coverageReporters": [
+      "html"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "coverage": "yarn test -- --coverage",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "redux-mock-store": "^1.5.1"
   }
 }

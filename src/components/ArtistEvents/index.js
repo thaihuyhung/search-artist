@@ -90,6 +90,7 @@ class ArtistEvents extends Component {
       <div className={classes.artistEvents}>
         <Grid classes={{ container: classes.filterWrapper }} container justify="space-between" alignContent="center" alignItems="center">
           <Filter 
+            name="filter-by-month"
             className={classes.eventFilter} 
             label="Months" 
             renderValue={this.renderMonthFilterValue}
@@ -97,6 +98,7 @@ class ArtistEvents extends Component {
             onClose={this.onFilterByMonth}
           />
           <Filter
+            name="filter-by-country"
             className={classes.eventFilter}
             label="Countries"
             options={countryOptions}
@@ -106,7 +108,7 @@ class ArtistEvents extends Component {
         {
           filteredEvents.size ? 
             filteredEvents.map(event => <EventItem key={event.get('id')} event={event} />) : 
-            <MessageBlock icon={<InboxIcon />} content="No events found for that filter criteria" />
+            <MessageBlock className={classes.messageBlock} icon={<InboxIcon />} content="No events found for that filter criteria" />
         }
       </div>
     )

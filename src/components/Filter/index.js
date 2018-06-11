@@ -17,7 +17,6 @@ class Filter extends Component {
     this.setState({
       value: event.target.value
     });
-
   }
 
   handleClose = () => {
@@ -28,21 +27,25 @@ class Filter extends Component {
     }
   }
 
+  defaultRenderValue = (selected) => selected.join(', ');
+
   render() {
-    const { options, label, className, renderValue } = this.props;
+    const { options, label, className, renderValue, name } = this.props;
     const { value } = this.state;
     return (
-      <FormControl className={className}>
+      <FormControl className={className} name={name}>
           <InputLabel>{label}</InputLabel>
           <Select
+            name={`${name}-select`}
             multiple
             value={value}
             onChange={this.handleChange}
             input={<Input />}
             MenuProps={{
-              onExit: this.handleClose
+              onExit: this.handleClose,
+              name: name + '-menu'
             }}
-            renderValue={selected => renderValue ? renderValue(selected) : selected.join(', ')}
+            renderValue={renderValue ? renderValue : this.defaultRenderValue}
           >
             {options.map(option => (
               <MenuItem key={option} value={option}>
@@ -57,9 +60,10 @@ class Filter extends Component {
 }
 
 Filter.propTypes = {
-  options: PropTypes.object,
+  options: PropTypes.object.isRequired,
   label: PropTypes.string,
   className: PropTypes.string,
+  name: PropTypes.string,
   onClose: PropTypes.func,
   renderValue: PropTypes.func,
 };

@@ -7,7 +7,7 @@ import styles from './style';
 const ArtistEventsSkeleton = ({ classes }) => {
   const events = Array(5).fill(1);
   return (
-    <div className={classes.container}>
+    <div name="artist-events-skeleton" className={classes.container}>
       <div className={classes.filterWrapper}>
         <div className={classNames(classes.filter, classes.skeleton)} />
         <div className={classNames(classes.filter, classes.skeleton)} />

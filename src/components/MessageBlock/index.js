@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import styles from './style';
 
-const MessageBlock = ({ classes, content, icon, height }) => {
+const MessageBlock = ({ classes, className, content, icon, height }) => {
   return (
     <Grid 
       container 
@@ -13,9 +13,11 @@ const MessageBlock = ({ classes, content, icon, height }) => {
       alignContent="center" 
       alignItems="center"
       style={{ height: `${height}px`}}
+      name="message-box"
+      className={className}
     >
       {icon}
-      <div className={classes.message}>{content}</div>
+      <div name="message-box-content" className={classes.message}>{content}</div>
     </Grid>
   );
 };
@@ -23,6 +25,7 @@ const MessageBlock = ({ classes, content, icon, height }) => {
 MessageBlock.propTypes = {
   classes: PropTypes.object,
   content: PropTypes.string,
+  className: PropTypes.string,
   icon: PropTypes.object,
   height: PropTypes.number
 };

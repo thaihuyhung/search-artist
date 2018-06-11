@@ -6,7 +6,7 @@ import styles from './style';
 
 const ArtistDetailSkeleton = ({ classes }) => {
   return (
-    <div className={classes.artistDetailSkeleton}>
+    <div name="artist-detail-skeleton" className={classes.artistDetailSkeleton}>
       <div>
         <div className={classNames(classes.artistNameMobile, classes.skeleton)} />
         <div className={classNames(classes.artistImage, classes.skeleton)} />

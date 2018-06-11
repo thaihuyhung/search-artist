@@ -35,7 +35,10 @@ class Autocomplete extends Component {
       renderItem({
         suggestion,
         index,
-        itemProps: getItemProps({ item: getSelectedText(suggestion) }),
+        itemProps: getItemProps({ 
+          name: 'suggestion-item',
+          item: getSelectedText(suggestion) 
+        }),
         highlightedIndex,
         selectedItem,
       })

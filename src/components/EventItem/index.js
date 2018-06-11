@@ -26,7 +26,7 @@ const EventItem = ({ event, classes }) => {
   const ticket = offers.find(offer => offer.get('type') === 'Tickets' && offer.get('status') === 'available');
   const bookTicketUrl = ticket ? ticket.get('url') : '';
   return (
-    <Grid className={classes.event} container justify="space-between" alignContent="center" alignItems="center">
+    <Grid name="event-item" className={classes.event} container justify="space-between" alignContent="center" alignItems="center">
       <div className={classes.eventInfo}>
         <div className={classes.eventDate}>
           <div className={classes.eventMonth}>{format(datetime, 'MMM').toUpperCase()}</div>
