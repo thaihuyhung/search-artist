@@ -1,4 +1,4 @@
-export default {
+export default theme => ({
   getTicketButton: {
     appearance: 'none',
     height: '34px',
@@ -31,9 +31,13 @@ export default {
       background: '#ffffff',
       top: '8px',
       position: 'absolute',
-      left: '-1px',
+      left: '-2px',
       zIndex: '1',
       boxSizing: 'border-box',
+      [theme.breakpoints.down('xs')]: {
+        background: '#f8f8f8',
+        borderLeftColor: '#f8f8f8',
+      }
     },
     '&:after': {
       content: '""',
@@ -46,9 +50,13 @@ export default {
       background: '#ffffff',
       top: '8px',
       position: 'absolute',
-      right: '-1px',
+      right: '-2px',
       zIndex: '1',
       boxSizing: 'border-box',
+      [theme.breakpoints.down('xs')]: {
+        background: '#f8f8f8',
+        borderRightColor: '#f8f8f8',
+      }
     }
   }
-}
+})

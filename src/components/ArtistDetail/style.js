@@ -1,6 +1,9 @@
-export default {
+const styles = theme => ({
   artistInfo: {
-    display: 'flex'
+    display: 'flex',
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column'
+    }
   },
   artistImage: {
     width: 300,
@@ -8,7 +11,11 @@ export default {
     marginBottom: 16,
     boxShadow: '0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12)',
     borderRadius: 4,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    [theme.breakpoints.down('xs')]: {
+      width: 'calc(100vw - 16px)',
+      height: 'calc(100vw - 16px)',
+    }
   },
   bandsintown: {
     display: 'block',
@@ -20,6 +27,7 @@ export default {
   facebookPage: {
     display: 'flex',
     alignItems: 'center',
+    marginBottom: 8,
     '& span': {
       fontSize: '24px',
       lineHeight: '24px',
@@ -30,6 +38,10 @@ export default {
     paddingLeft: 16,
     width: 'calc(100% - 300px)',
     boxSizing: 'border-box',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+      paddingLeft: 0,
+    }
   },
   artistName: {
     color: '#1b9cb8'
@@ -40,6 +52,9 @@ export default {
     alignItems: 'center',
     alignContent: 'center',
     marginBottom: 16,
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: 8
+    }
   },
   upcomingEventContent: {
     background: '#1b9cb8',
@@ -60,7 +75,7 @@ export default {
       borderLeft: '16px solid rgba(0,0,0,0)',
       borderRight: '0',
       top: '0',
-      left: '-16px',
+      left: '-15px',
     },
     '&:after': {
       content: '""',
@@ -72,7 +87,9 @@ export default {
       borderRight: '16px solid rgba(0,0,0,0)',
       borderLeft: '0',
       top: '0',
-      right: '-16px',
+      right: '-15px',
     }
   }
-}
+});
+
+export default styles;

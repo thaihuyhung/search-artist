@@ -22,7 +22,6 @@ class SearchPage extends Component {
       loadingSuggestions,
       initialLoad,
     } = this.props;
-    // TODO handle the case with no ID ( Lee Ryan)
     return (
       <div>
         <QueryInput 

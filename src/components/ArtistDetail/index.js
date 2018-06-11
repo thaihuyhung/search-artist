@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, Hidden } from '@material-ui/core';
+import { Inbox as InboxIcon } from '@material-ui/icons';
 import Image from '../Image';
 import styles from './style';
 import classNames from 'classnames';
@@ -11,6 +12,8 @@ import bitText from '../../assets/bitText.svg';
 import facebook from '../../assets/facebook.svg';
 import Link from '../Link';
 import url from 'wurl';
+import Skeleton from './skeleton';
+import MessageBlock from '../MessageBlock';
 
 const ArtistDetail = ({ className, classes, detail, loadingDetail, events, loadingEvents, initialLoad }) => {
   if (initialLoad) {
@@ -18,12 +21,10 @@ const ArtistDetail = ({ className, classes, detail, loadingDetail, events, loadi
     return null;
   }
   if (loadingDetail) {
-    // TODO Artist Loading Skeleton;
-    return <div>Loading...</div>;
+    return <Skeleton />;
   }
   if (!detail) {
-    // TODO Empty Artist Info
-    return <div>No Artist Found</div>;
+    return <MessageBlock icon={<InboxIcon />} content="No data found for this artist" height={400} />;
   }
   const name = detail.get('name');
   const imageUrl = detail.get('image_url');
@@ -31,6 +32,11 @@ const ArtistDetail = ({ className, classes, detail, loadingDetail, events, loadi
   const facebookUrl = detail.get('facebook_page_url');
   return (
     <section className={classNames(className, classes.artistInfo)}>
+        <Hidden smUp>
+          <Typography classes={{ root: classes.artistName }} variant="display1" gutterBottom align="center">
+            {name}
+          </Typography>
+        </Hidden>
         <div>
           <Image className={classes.artistImage} src={imageUrl} />
           {
@@ -49,9 +55,11 @@ const ArtistDetail = ({ className, classes, detail, loadingDetail, events, loadi
           }
         </div>
         <div className={classes.artistInfoContent}>
-          <Typography classes={{ root: classes.artistName }} variant="display1" gutterBottom>
-            {name}
-          </Typography>
+          <Hidden xsDown>
+            <Typography classes={{ root: classes.artistName }} variant="display1" gutterBottom>
+              {name}
+            </Typography>
+          </Hidden>
           <div className={classes.upcomingEvent}>
             <span className={classes.upcomingEventContent}>Upcoming Event</span>
           </div>

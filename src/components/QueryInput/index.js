@@ -53,6 +53,7 @@ class QueryInput extends Component {
   render() {
     const { className, loadingSuggestions } = this.props;
     const inputProps = {
+      id: 'search-artist-input',
       label: 'Search an artist',
       InputProps: {
         startAdornment: <InputAdornment position="start"><SearchIcon /></InputAdornment>,
