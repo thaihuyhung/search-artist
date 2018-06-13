@@ -1,0 +1,7 @@
+{
+  "proxies": {
+    "/searchSuggestions": {
+      "origin": "https://www.bandsintown.com"
+    }
+  }
+}
