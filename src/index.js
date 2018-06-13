@@ -4,7 +4,6 @@ import configureStore from './containers/App/configureStore';
 import createHistory from 'history/createBrowserHistory'
 import rootSaga from './containers/App/saga';
 import App from './containers/App';
-import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
 const initialState = {};
@@ -16,4 +15,3 @@ const store = configureStore(initialState, history);
 store.runSaga(rootSaga);
 
 ReactDOM.render(<App store={store} history={history} />, document.getElementById('root'));
-registerServiceWorker();
