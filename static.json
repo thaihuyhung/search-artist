@@ -2,7 +2,7 @@
   "root": "build/",
   "proxies": {
     "/searchSuggestions": {
-      "origin": "https://www.bandsintown.com/"
+      "origin": "https://www.bandsintown.com/searchSuggestions"
     }
   }
 }
