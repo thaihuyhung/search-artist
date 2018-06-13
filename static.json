@@ -1,8 +1,8 @@
 {
   "root": "build/",
   "proxies": {
-    "/searchSuggestions": {
-      "origin": "https://www.bandsintown.com"
+    "/searchSuggestions/": {
+      "origin": "https://www.bandsintown.com/"
     }
   }
 }
