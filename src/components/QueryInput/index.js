@@ -11,8 +11,8 @@ import defaultAvatar from '../../assets/default-avatar.jpg';
 class QueryInput extends Component {
   onSelectArtist = (selectedArtist) => {
     const { queryArtist } = this.props;
-    if (selectedArtist) {
-      queryArtist(selectedArtist);
+    if (selectedArtist && selectedArtist.get('name')) {
+      queryArtist(selectedArtist.get('name'));
     }
   }
 
@@ -23,7 +23,9 @@ class QueryInput extends Component {
     }
   }
 
-  getSelectedText = (suggestion) => suggestion.get('name');
+  getSelectedText = (suggestion) => {
+    return suggestion ? suggestion.get('name') : '';
+  };
 
   getArtists = () => {
     const { artistSuggestions } = this.props;

@@ -31,6 +31,7 @@
   "proxy": "https://www.bandsintown.com",
   "jest": {
     "coverageReporters": [
+      "json-summary",
       "html"
     ]
   },
@@ -42,6 +43,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "fetch-mock": "^6.4.4",
     "redux-mock-store": "^1.5.1"
   }
 }

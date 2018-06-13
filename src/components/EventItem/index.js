@@ -25,6 +25,11 @@ const EventItem = ({ event, classes }) => {
   const offers = event.get('offers');
   const ticket = offers.find(offer => offer.get('type') === 'Tickets' && offer.get('status') === 'available');
   const bookTicketUrl = ticket ? ticket.get('url') : '';
+
+  // Hack
+  // Because the library didn't support "United States of America" case
+  const countryName = country === 'United States of America' ? 'United States' : country.trim();
+  const countryCode = countries().getCode(countryName) || 'un';
   return (
     <Grid name="event-item" className={classes.event} container justify="space-between" alignContent="center" alignItems="center">
       <div className={classes.eventInfo}>
@@ -40,7 +45,7 @@ const EventItem = ({ event, classes }) => {
           <div>
             <Tooltip title={country} placement="bottom">
               <span>
-                <FlagIcon code={countries().getCode(country).toLowerCase()} />
+                <FlagIcon code={countryCode.toLowerCase()} />
               </span>
             </Tooltip>
             <Link className={classes.eventLocation} href={googleMapUrl} target="_blank">

@@ -10,5 +10,20 @@ export default {
   autocompleteLoadingText: {
     lineHeight: '48px',
     paddingLeft: 16,
+  },
+  searchHistoryWrapper: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: '16px',
+  },
+  searchHistoryLabel: {
+    color: '#8c8c8c',
+  },
+  clearHistory: {
+    color: '#1a9cb7',
+    '&:hover': {
+      color: '#16849b',
+      cursor: 'pointer',
+    }
   }
 }
